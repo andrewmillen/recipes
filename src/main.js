@@ -5,6 +5,15 @@ import VueFire from 'vuefire'
 import App from './App'
 import router from './router'
 
+// CSS Libraries
+import 'normalize.css'
+
+
+// Feather Icons
+import {VueFeatherIconsSsr as icon} from 'vue-feather-icons-ssr'
+//import {VueFeatherIconsSsrJsx as icon} from 'vue-feather-icons-ssr'
+Vue.component('icon', icon)
+
 Vue.use(VueFire)
 
 Vue.config.productionTip = false

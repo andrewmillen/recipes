@@ -1,0 +1,106 @@
+// =================================
+// Variables
+// =================================
+
+$black : #4A4A53;
+$gray : #818192;
+$silver : #F6F6F7;
+$white : #FFFFFF;
+
+// =================================
+// Mixins
+// =================================
+
+$breakpoints: (
+  'small':  ( min-width:  767px ),
+  'medium': ( min-width:  992px ),
+  'large':  ( min-width: 1200px )
+) !default;
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+// =================================
+// Global, Helpers
+// =================================
+
+// Box Sizing
+// ==================
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+// Clearfix
+// ==================
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.container {
+  max-width: 900px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+// Typography
+// ==================
+
+a {
+  transition: all .1s;
+}
+
+h1 {
+  margin: 6vw 0 3vw;
+  font-weight: 300;
+
+  @include breakpoint(medium) {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0 0 1rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+#app {
+  font-family: 'Sofia Pro', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $black;
+  background: $silver;
+}
